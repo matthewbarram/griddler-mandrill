@@ -148,7 +148,9 @@ describe Griddler::Mandrill::Adapter, '.normalize_params' do
       msg:
         {
           raw_msg: 'raw',
-          headers: {},
+          headers: {"X-Mailer" => "Airmail (271)",
+                    "Mime-Version" => "1.0",
+                    "Content-Type" => "multipart/alternative; boundary=\"546876a7_66334873_aa8\""},
           text: text_body,
           html: text_html,
           from_email: 'hernan@example.com',
@@ -179,6 +181,9 @@ describe Griddler::Mandrill::Adapter, '.normalize_params' do
       bcc: ['Roger <hidden@example.mandrillapp.com>'],
       from: 'Hernan Example <hernan@example.com>',
       subject: 'hello',
+      headers: {"X-Mailer" => "Airmail (271)",
+               "Mime-Version" => "1.0",
+               "Content-Type" => "multipart/alternative; boundary=\"546876a7_66334873_aa8\""},
       text: %r{Dear bob},
       html: %r{<p>Dear bob</p>},
       raw_body: %r{raw}
